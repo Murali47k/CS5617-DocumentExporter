@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace Exporter;
-internal class JsonExporter
+public sealed class JsonExporter : IDocumentExporter
 {
+    public string Export(Document document)
+    {
+        return JsonSerializer.Serialize(document);
+    }
 }
