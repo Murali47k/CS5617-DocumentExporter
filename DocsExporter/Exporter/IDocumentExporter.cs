@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Exporter;
-internal interface IDocumentExporter
+public interface IDocumentExporter
 {
+    string Export(Document document);
 
 }
