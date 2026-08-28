@@ -5,7 +5,5 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Exporter;
-public class Document
-{
 
-}
+public sealed record Document(string Title, IReadOnlyList<string> Rows);
