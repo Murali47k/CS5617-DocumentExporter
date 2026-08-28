@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Exporter;
-public class Document
+internal class TextExporter
 {
-
 }
