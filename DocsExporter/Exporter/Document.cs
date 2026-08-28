@@ -1,7 +1,5 @@
-﻿namespace Exporter
+﻿namespace Exporter;
+public class Document
 {
-    public class Document
-    {
 
-    }
 }
