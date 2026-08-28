@@ -9,6 +9,8 @@ public sealed class TextExporter : IDocumentExporter
 {
     public string Export(Document document)
     {
+        ArgumentNullException.ThrowIfNull(document);
+
         var sb = new StringBuilder();
 
         sb.AppendLine(document.Title);

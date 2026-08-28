@@ -10,6 +10,8 @@ public sealed class JsonExporter : IDocumentExporter
 {
     public string Export(Document document)
     {
+        ArgumentNullException.ThrowIfNull(document);
+
         return JsonSerializer.Serialize(document);
     }
 }
