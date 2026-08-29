@@ -1,7 +1,17 @@
 # CS5617-DocumentExporter
 
+### Problem Statement
 
-## Class Diagram
+#### A07 | SOLID - Liskov Substitution Principle | Document Exporters 
+Design text, CSV, and JSON exporters that remain correct when used through one base contract. 
+
+**Minimum requirements:** State the contract clearly; implement at least three substitutable exporters; avoid 
+unsupported-operation exceptions; test every implementation with shared contract tests. 
+
+### Design Overveiw
+
+
+### Class Diagram
 ![Class Diagram](UML_DocsExporter.png)
 
 ### Project Structure
@@ -39,6 +49,9 @@ dotnet test
     - (9) -> CsvExporter
     - (8) -> JsonExporter
 
+### Test Summary 
+
+### Critical Analysis
 
 ### Environment
 
