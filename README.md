@@ -1,12 +1,28 @@
 # CS5617-DocumentExporter
 
 
-### Class Diagram
+## Class Diagram
 ![Class Diagram](UML_DocsExporter.png)
 
 ### Project Structure
-
-
+```text
+DocsExporter/
+│
+├── Exporter/
+│   ├── CsvExporter.cs
+│   ├── Document.cs
+│   ├── IDocumentExporter.cs
+│   ├── JsonExporter.cs
+│   └── TextExporter.cs
+│
+├── Exporter.Tests/
+│   ├── CsvExporterTest.cs
+│   ├── ExporterContractTest.cs
+│   ├── JsonExporterTest.cs
+│   └── TextExporterTest.cs
+│
+└── DocsExporter.sln
+```
 
 ### To Build and Run 
 
@@ -26,4 +42,4 @@ dotnet test
 
 ### Environment
 
-Made in Visual Studio 2022
+Made with Visual Studio 2022
