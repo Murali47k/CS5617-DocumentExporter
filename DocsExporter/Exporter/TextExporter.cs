@@ -3,7 +3,7 @@
 namespace Exporter;
 
 /// <summary>
-/// TextExporter is a implementation of the IDocumentExporter interface that exports a Document to a plain text format.
+/// TextExporter is an implementation of the IDocumentExporter interface that exports a document to a plain text format.
 /// </summary>
 public sealed class TextExporter : IDocumentExporter
 {

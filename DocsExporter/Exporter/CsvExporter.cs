@@ -3,7 +3,7 @@
 namespace Exporter;
 
 /// <summary>
-/// CsvExporter is an implementation of the IDocumentExporter interface that exports a Document to a csv format
+/// CsvExporter is an implementation of the IDocumentExporter interface that exports a document to a csv format
 /// </summary>
 public sealed class CsvExporter : IDocumentExporter
 {
