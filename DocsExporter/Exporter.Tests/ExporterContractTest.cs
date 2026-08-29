@@ -3,10 +3,19 @@ using Exporter;
 
 namespace Exporter.Tests;
 
+/// <summary>
+/// Defines the common contract tests that every document exporter must satisfy.
+/// </summary>
 public abstract class ExporterContractTest
 {
+    /// <summary>
+    /// Creates an instance of the document exporter being tested.
+    /// </summary>
     protected abstract IDocumentExporter CreateExporter();
 
+    /// <summary>
+    /// Verifies that an exporter produces a non-empty result containing the document title and all document rows.
+    /// </summary>
     protected void ExporterContract()
     {
         // Arrange
@@ -14,14 +23,13 @@ public abstract class ExporterContractTest
             "Test Document",
             new List<string>
             {
-                "First row","Second row","Third row"
+                "First row", "Second row", "Third row"
             }
         );
 
         IDocumentExporter exporter = CreateExporter();
 
         // Act
-
         string result = exporter.Export(document);
 
         // Assert
