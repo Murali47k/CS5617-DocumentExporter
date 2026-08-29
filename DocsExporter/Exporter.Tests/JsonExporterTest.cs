@@ -92,5 +92,126 @@ public class JsonExporterTest : ExporterContractTest
         );
     }
 
-    
+    /// <summary>
+    /// Tests that the exported result is valid JSON.
+    /// </summary>
+    [TestMethod]
+    public void JsonExporterValidJson()
+    {
+        // Arrange
+        var document = new Document(
+            "Formula 1",
+            new List<string>
+            {
+                "RedBull Racing", "Mercedes"
+            }
+        );
+
+        IDocumentExporter exporter = CreateExporter();
+
+        // Act
+        string result = exporter.Export(document);
+
+        // Assert
+        JsonDocument json = JsonDocument.Parse(result);
+        Assert.IsNotNull(json);
+    }
+
+    /// <summary>
+    /// Tests that the exported JSON contains the correct title and rows.
+    /// </summary>
+    [TestMethod]
+    public void JsonExporterCorrectStructure()
+    {
+        // Arrange
+        var document = new Document(
+            "Formula 1",
+            new List<string>
+            {
+                "RedBull Racing", "Mercedes"
+            }
+        );
+
+        IDocumentExporter exporter = CreateExporter();
+
+        // Act
+        string result = exporter.Export(document);
+
+        // Assert
+        using JsonDocument json = JsonDocument.Parse(result);
+
+        Assert.AreEqual(
+            "Formula 1",
+            json.RootElement.GetProperty("Title").GetString()
+        );
+
+        JsonElement rows = json.RootElement.GetProperty("Rows");
+
+        Assert.AreEqual(2, rows.GetArrayLength());
+        Assert.AreEqual("RedBull Racing", rows[0].GetString());
+        Assert.AreEqual("Mercedes", rows[1].GetString());
+    }
+
+    /// <summary>
+    /// Tests that special characters are correctly serialized into JSON.
+    /// </summary>
+    [TestMethod]
+    public void JsonExporterSpecialCharacters()
+    {
+        // Arrange
+        var document = new Document(
+            "Formula \"1\"",
+            new List<string>
+            {
+                "RedBull\nRacing",
+                "Mercedes\tAMG"
+            }
+        );
+
+        IDocumentExporter exporter = CreateExporter();
+
+        // Act
+        string result = exporter.Export(document);
+
+        // Assert
+        using JsonDocument json = JsonDocument.Parse(result);
+
+        Assert.AreEqual(
+            "Formula \"1\"",
+            json.RootElement.GetProperty("Title").GetString()
+        );
+
+        JsonElement rows = json.RootElement.GetProperty("Rows");
+
+        Assert.AreEqual("RedBull\nRacing", rows[0].GetString());
+        Assert.AreEqual("Mercedes\tAMG", rows[1].GetString());
+    }
+
+    /// <summary>
+    /// Tests that an empty title is correctly serialized into JSON.
+    /// </summary>
+    [TestMethod]
+    public void JsonExporterEmptyTitle()
+    {
+        // Arrange
+        var document = new Document(
+            "",
+            new List<string>
+            {
+                "RedBull Racing"
+            }
+        );
+
+        IDocumentExporter exporter = CreateExporter();
+
+        // Act
+        string result = exporter.Export(document);
+
+        // Assert
+        using JsonDocument json = JsonDocument.Parse(result);
+
+        Assert.AreEqual(
+            "",json.RootElement.GetProperty("Title").GetString()
+        );
+    }
 }
