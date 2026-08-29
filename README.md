@@ -116,10 +116,20 @@ The common `IDocumentExporter` interface ensures that `TextExporter`, `CsvExport
 
 ---
 
+## References
+
+1. **Liskov Substitution Principle**  
+   Wikipedia > Used as a reference for basics of the Liskov Substitution Principle 
+   https://en.wikipedia.org/wiki/Liskov_substitution_principle
+
+2. **Observer Pattern Demo**  
+   GitHub > Used as a reference for commenting format, test-case organization, and `.editorconfig` configuration.  
+   https://github.com/chittur/observer-pattern-demo
+
+---
+
 ### Environment
 
 Made with Visual Studio 2022
 
 ---
-
-
