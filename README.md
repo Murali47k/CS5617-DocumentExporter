@@ -4,7 +4,7 @@
 
 ### A07 | SOLID - Liskov Substitution Principle | Document Exporters
 
-> Design text, CSV, and JSON exporters that remain correct when used through one base contract.
+Design text, CSV, and JSON exporters that remain correct when used through one base contract.
 
 #### Minimum Requirements
 
@@ -108,11 +108,11 @@ Passed! - Failed: 0, Passed: 21, Skipped: 0
 
 ## Critical Analysis
 
-The design keeps the abstraction small and focused: `IDocumentExporter` defines only the operation that every exporter can meaningfully support.
+The common `IDocumentExporter` interface ensures that `TextExporter`, `CsvExporter`, and `JsonExporter` can be substituted without changing the client code. The shared contract tests further verify that each implementation satisfies the expected behavior.
 
-Using a shared contract allows new exporters to be added without modifying existing implementations or client code.
+- **Limitation 1:** The `Document` model stores rows as strings, which works for the current exporters but limits the system to simple documents. Supporting richer structures such as multi-column CSV data or nested JSON objects would require extending the model.
 
-The main **limitation** is that the project focuses specifically on demonstrating LSP rather than providing a complete production-level document-exporting framework.
+- **Limitation 2:** While new exporters can be added without modifying existing implementations, a large number of format-specific requirements could make the common interface harder to maintain and potentially weaken the simplicity of the abstraction.
 
 ---
 
