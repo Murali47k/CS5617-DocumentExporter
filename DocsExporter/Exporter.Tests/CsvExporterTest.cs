@@ -188,4 +188,20 @@ public class CsvExporterTest : ExporterContractTest
         Assert.IsTrue(result.Contains("RedBull Racing"));
         Assert.IsFalse(result.Contains("\"RedBull Racing\""));
     }
+
+    /// <summary>
+    /// Empty string edge case for CsvFormat method.
+    /// </summary>
+    [TestMethod]
+    public void CsvFormatEmptyString()
+    {
+        // Arrange
+        string input = "";
+
+        // Act
+        string result = CsvExporter.CsvFormat(input);
+
+        // Assert
+        Assert.AreEqual("", result);
+    }
 }
